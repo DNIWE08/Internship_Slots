@@ -8,6 +8,10 @@ public class Reel : MonoBehaviour
     [SerializeField] private RectTransform mainCanvasRT;
 
     [SerializeField] private Sprite[] sprites;
+    [SerializeField] private GameConfig gameConfig;
+    [SerializeField] private int reelId;
+    private int finalScreenNumber = 0;
+    private int currentFinalSymbol = 0;
 
     [SerializeField] private RectTransform[] reelSymbols;
     [SerializeField] private float endPosition;
@@ -15,6 +19,8 @@ public class Reel : MonoBehaviour
     private float mainCanvasScale;
 
     private float symbolHeigth;
+
+    internal bool isFinalSpin = false;
 
     internal RectTransform[] ReelSymbols { get => reelSymbols; }
 
@@ -32,43 +38,77 @@ public class Reel : MonoBehaviour
     {
         for (var i = 0; i < reelSymbols.Length; i++)
         {
-            var reelRT = reelSymbols[i].transform;
+            var reelT = reelSymbols[i].transform;
 
-            if (reelRT.position.y <= -endPosition * mainCanvasScale)
+            if (reelT.position.y <= -endPosition * mainCanvasScale)
             {
-                MoveTop(reelRT);
-                ChangeSprite(reelRT);
+                MoveTop(reelT);
+                ChangeSprite(reelT);
             }
         }
     }
 
-    private void MoveTop(Transform reelRT)
+    private void MoveTop(Transform reelT)
     {
-        var topSymbolPosition = reelRT.localPosition.y + symbolHeigth * reelSymbols.Length;
-        var topPosition = new Vector3(reelRT.localPosition.x, topSymbolPosition);
-        reelRT.localPosition = topPosition;
+        var topSymbolPosition = reelT.localPosition.y + symbolHeigth * reelSymbols.Length;
+        var topPosition = new Vector3(reelT.localPosition.x, topSymbolPosition);
+        reelT.localPosition = topPosition;
     }
 
-    private void ChangeSprite(Transform reelRT)
+    private void ChangeSprite(Transform reelT)
     {
-        reelRT.GetComponent<Image>().sprite = GetRandomSprite();
+        if (isFinalSpin)
+        {
+            reelT.GetComponent<Image>().sprite = GetFinalSprite();
+        }
+        else
+        {
+            reelT.GetComponent<Image>().sprite = GetRandomSprite();
+        }
+    }
+
+    private Sprite GetFinalSprite()
+    {
+        var finalScreenItemIndex = currentFinalSymbol + (reelId - 1) * 3;
+        var currentFinalScreen = gameConfig.FinalScreens[finalScreenNumber].FinalScreenData;
+        if (finalScreenItemIndex >= currentFinalScreen.Length)
+        {
+            finalScreenItemIndex = 0;
+        }
+        var newSymbol = gameConfig.GameSprites[currentFinalScreen[finalScreenItemIndex]];
+        currentFinalSymbol++;
+        return newSymbol.SpriteImage;
     }
 
     private Sprite GetRandomSprite()
     {
-        int randomSymbol = Random.Range(0, sprites.Length);
-        var sprite = sprites[randomSymbol];
+        int randomSymbol = Random.Range(0, gameConfig.GameSprites.Length);
+        var sprite = gameConfig.GameSprites[randomSymbol].SpriteImage;
         return sprite;
     }
 
     public void ResetPosition(float spinnerPosition)
     {
+        ResetValues();
         foreach (var symbol in reelSymbols)
         {
             var reelPos = symbol.transform.localPosition;
             var correction = Mathf.Round(reelPos.y - spinnerPosition);
             var correctedPos = new Vector3(reelPos.x, correction);
             symbol.transform.localPosition = correctedPos;
+        }
+    }
+
+    private void ResetValues()
+    {
+        currentFinalSymbol = 0;
+        if (finalScreenNumber < gameConfig.FinalScreens.Length - 1)
+        {
+            finalScreenNumber++;
+        }
+        else
+        {
+            finalScreenNumber = 0;
         }
     }
 }

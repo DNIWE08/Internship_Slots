@@ -479,6 +479,8 @@ MonoBehaviour:
   - {fileID: 4588468031203458904, guid: fde45aa4120d65f4ab07974755fcee34, type: 3}
   - {fileID: 4830219810074551288, guid: fde45aa4120d65f4ab07974755fcee34, type: 3}
   - {fileID: -5148847302637816175, guid: fde45aa4120d65f4ab07974755fcee34, type: 3}
+  gameConfig: {fileID: 11400000, guid: d588b44c696984a43bbaab37b39066e1, type: 2}
+  reelId: 3
   reelSymbols:
   - {fileID: 4565474808540480257}
   - {fileID: 6142889959586080318}
