@@ -74,6 +74,10 @@ public class ReelSpinner : MonoBehaviour
             .SetEase(Ease.OutCubic)
             .OnComplete(() =>
             {
+                if(reelT.GetComponent<Reel>().reelId == 3)
+                {
+                    WinLineChacker.StartCheckAnimation();
+                }
                 PrepareReel(reelT);
             });
     }

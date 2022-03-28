@@ -6,28 +6,31 @@ using UnityEngine.UI;
 public class Reel : MonoBehaviour
 {
     [SerializeField] private RectTransform mainCanvasRT;
-
-    [SerializeField] private Sprite[] sprites;
     [SerializeField] private GameConfig gameConfig;
-    [SerializeField] private int reelId;
-    private int finalScreenNumber = 0;
-    private int currentFinalSymbol = 0;
+    [SerializeField] public int reelId;
 
     [SerializeField] private RectTransform[] reelSymbols;
-    [SerializeField] private float endPosition;
+    private Transform[] endReelSymbols;
 
-    private float mainCanvasScale;
-
-    private float symbolHeigth;
-
+    //[SerializeField] private Sprite[] sprites;
+    private int finalScreenNumber = 0;
+    private int currentFinalSymbol = 0;
     internal bool isFinalSpin = false;
 
+
+    [SerializeField] private float endPosition;
+    private float mainCanvasScale;
+    private float symbolHeigth;
+
+    internal Transform[] EndReelSymbols => endReelSymbols;
     internal RectTransform[] ReelSymbols { get => reelSymbols; }
+
 
     private void Start()
     {
         symbolHeigth = reelSymbols[0].rect.height;
         mainCanvasScale = mainCanvasRT.lossyScale.y;
+        endReelSymbols = new Transform[3];
         foreach (var symbol in reelSymbols)
         {
             ChangeSprite(symbol);
@@ -60,6 +63,11 @@ public class Reel : MonoBehaviour
         if (isFinalSpin)
         {
             reelT.GetComponent<Image>().sprite = GetFinalSprite();
+            for(var i = 0; i < endReelSymbols.Length; i++)
+            {
+                endReelSymbols[i] = reelT;
+                //WinLineChacker.StartCheckAnimation();
+            }
         }
         else
         {

@@ -332,6 +332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 517311774}
   - component: {fileID: 517311773}
+  - component: {fileID: 517311775}
   m_Layer: 0
   m_Name: Spinner_Component
   m_TagString: Untagged
@@ -373,6 +374,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &517311775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517311772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 845bf6d54364865409d95873f2ebe1c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameConfig: {fileID: 11400000, guid: d588b44c696984a43bbaab37b39066e1, type: 2}
+  reels:
+  - {fileID: 1005725430}
+  - {fileID: 552812699}
+  - {fileID: 991541304}
 --- !u!114 &552812699 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1005725430, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}

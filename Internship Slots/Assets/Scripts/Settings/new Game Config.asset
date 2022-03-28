@@ -24,6 +24,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 19288ef4c8437b046909a159407976b0, type: 2}
   - {fileID: 11400000, guid: 50ab906209ae2a34384ab9d350786f20, type: 2}
   finalScreens:
-  - {fileID: 11400000, guid: a5d5f58b79d53e940af18c92c09e044b, type: 2}
+  - {fileID: 11400000, guid: 78939eb9ab9120047a0ddc9b831ae64f, type: 2}
+  - {fileID: 11400000, guid: 6803a8274872a2c4aa918bae39d4a145, type: 2}
+  - {fileID: 11400000, guid: c2355207836ee8941add696933bfe651, type: 2}
   winLines:
   - {fileID: 11400000, guid: 2063dd7370c3c094ba0ac8e083f9a7cd, type: 2}
