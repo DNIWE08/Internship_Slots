@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d39b071241426544815ed1e5dd36770, type: 3}
   m_Name: Win Config 2
   m_EditorClassIdentifier: 
-  winLine: 010000000100000001000000
+  winLine: 020000000200000002000000

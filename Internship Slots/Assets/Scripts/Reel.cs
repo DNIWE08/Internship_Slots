@@ -10,7 +10,7 @@ public class Reel : MonoBehaviour
     [SerializeField] public int reelId;
 
     [SerializeField] private RectTransform[] reelSymbols;
-    private Transform[] endReelSymbols;
+    private List<Transform> endReelSymbols;
 
     //[SerializeField] private Sprite[] sprites;
     private int finalScreenNumber = 0;
@@ -22,15 +22,15 @@ public class Reel : MonoBehaviour
     private float mainCanvasScale;
     private float symbolHeigth;
 
-    internal Transform[] EndReelSymbols => endReelSymbols;
-    internal RectTransform[] ReelSymbols { get => reelSymbols; }
+    internal Transform[] ReelSymbols { get => reelSymbols; }
+    internal List<Transform> EndReelSymbols => endReelSymbols;
 
 
     private void Start()
     {
         symbolHeigth = reelSymbols[0].rect.height;
         mainCanvasScale = mainCanvasRT.lossyScale.y;
-        endReelSymbols = new Transform[3];
+        endReelSymbols = new List<Transform>();
         foreach (var symbol in reelSymbols)
         {
             ChangeSprite(symbol);
@@ -63,11 +63,15 @@ public class Reel : MonoBehaviour
         if (isFinalSpin)
         {
             reelT.GetComponent<Image>().sprite = GetFinalSprite();
-            for(var i = 0; i < endReelSymbols.Length; i++)
-            {
-                endReelSymbols[i] = reelT;
+            //for(var i = 0; i < endReelSymbols.Count; i++)
+            //{
+                if (endReelSymbols.Count < 3)
+                {
+                    endReelSymbols.Add(reelT);
+                }
                 //WinLineChacker.StartCheckAnimation();
-            }
+            //}
+            print("endReelSymbols count >> " + endReelSymbols.Count);
         }
         else
         {
@@ -118,5 +122,10 @@ public class Reel : MonoBehaviour
         {
             finalScreenNumber = 0;
         }
+    }
+
+    public void ClearEndReels()
+    {
+        endReelSymbols.Clear();
     }
 }

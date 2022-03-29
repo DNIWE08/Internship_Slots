@@ -20,39 +20,34 @@ public class WinLineChacker : MonoBehaviour
         OnReelsStop += WinLinesAnimation;
     }
 
-    public List<RectTransform> CheckWinLines()
+    public List<Transform> CheckWinLines()
     {
-        List<RectTransform> winItems = new List<RectTransform>();
-        RectTransform[] checkWinLine = new RectTransform[3];
+        List<Transform> winItems = new List<Transform>();
+        Transform[] checkWinLine = new Transform[3];
         foreach (var line in winLinesData)
         {
             for(var i = 0; i < line.WinLine.Length; i++)
             {
-                var currentReelSymbol = reels[i].ReelSymbols[line.WinLine[i]];
+                var currentReelSymbol = reels[i].EndReelSymbols[line.WinLine[i] - 1];
                 checkWinLine[i] = currentReelSymbol;
-                //print(line.WinLine[i]);
-                //winItems.Add(currentReelSymbol);
-                //print(currentReelSymbol.GetComponent<Image>().name);
-                //var winSymbol = 0;
             }
-            if(checkWinLine[0].GetComponent<Image>().sprite == checkWinLine[1].GetComponent<Image>().sprite &&
-                checkWinLine[1].GetComponent<Image>().sprite == checkWinLine[2].GetComponent<Image>().sprite)
+            if(checkWinLine[0].GetComponent<Image>().sprite.name == checkWinLine[1].GetComponent<Image>().sprite.name &&
+                checkWinLine[1].GetComponent<Image>().sprite.name == checkWinLine[2].GetComponent<Image>().sprite.name)
             {
                 winItems.Add(checkWinLine[0]);
                 winItems.Add(checkWinLine[1]);
                 winItems.Add(checkWinLine[2]);
             }
         }
-
         return winItems;
     }
 
     public void WinLinesAnimation()
     {
         var winSymbols = CheckWinLines();
-        if(winSymbols.Count > 0)
+        if(CheckWinLines().Count > 0)
         {
-            foreach(var symbol in winSymbols)
+            foreach(var symbol in CheckWinLines())
             {
                 symbol.DOScale(1.2f, 0.4f)
                     .SetLoops(4, LoopType.Yoyo)
@@ -63,9 +58,14 @@ public class WinLineChacker : MonoBehaviour
                 FillSymbols(winSymbols, Color.grey);
             }
         }
+
+        foreach(var reel in reels)
+        {
+            reel.ClearEndReels();
+        }
     }
 
-    private void FillSymbols(List<RectTransform> winSymbols, Color color)
+    private void FillSymbols(List<Transform> winSymbols, Color color)
     {
         for (var i = 0; i < reels.Length; i++)
         {

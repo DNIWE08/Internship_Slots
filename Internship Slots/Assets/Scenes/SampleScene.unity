@@ -417,6 +417,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reel_Canvas_3
       objectReference: {fileID: 0}
+    - target: {fileID: 3799569913012075150, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
+      propertyPath: m_Name
+      value: Symbol_Prefab_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610348661715353759, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
+      propertyPath: m_Name
+      value: Symbol_Prefab_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213384759046941119, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
+      propertyPath: m_Name
+      value: Symbol_Prefab_3
+      objectReference: {fileID: 0}
     - target: {fileID: 6574635293866610427, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -500,6 +512,10 @@ PrefabInstance:
     - target: {fileID: 6574635293866610427, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884797355359042885, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
+      propertyPath: m_Name
+      value: Symbol_Prefab_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
@@ -1243,6 +1259,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reel_Canvas_2
       objectReference: {fileID: 0}
+    - target: {fileID: 3799569913012075150, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
+      propertyPath: m_Name
+      value: Symbol_Prefab_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610348661715353759, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
+      propertyPath: m_Name
+      value: Symbol_Prefab_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213384759046941119, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
+      propertyPath: m_Name
+      value: Symbol_Prefab_3
+      objectReference: {fileID: 0}
     - target: {fileID: 6574635293866610427, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1326,6 +1354,10 @@ PrefabInstance:
     - target: {fileID: 6574635293866610427, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884797355359042885, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
+      propertyPath: m_Name
+      value: Symbol_Prefab_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
@@ -1451,12 +1483,32 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1005725430, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
+      propertyPath: endPosition
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 1005725430, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
       propertyPath: mainCanvasRT
       value: 
       objectReference: {fileID: 2053220424}
+    - target: {fileID: 291447595142547001, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 650948090708957789, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
       propertyPath: m_Name
       value: Reel_Canvas_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799569913012075150, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
+      propertyPath: m_Name
+      value: Symbol_Prefab_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610348661715353759, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
+      propertyPath: m_Name
+      value: Symbol_Prefab_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213384759046941119, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
+      propertyPath: m_Name
+      value: Symbol_Prefab_3
       objectReference: {fileID: 0}
     - target: {fileID: 6574635293866610427, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
       propertyPath: m_Pivot.x
@@ -1541,6 +1593,14 @@ PrefabInstance:
     - target: {fileID: 6574635293866610427, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884797355359042885, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
+      propertyPath: m_Name
+      value: Symbol_Prefab_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8559874865307708534, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dba156e5beec08458baa1537ba4a85d, type: 3}

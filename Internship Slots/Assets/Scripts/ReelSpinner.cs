@@ -22,7 +22,7 @@ public class ReelSpinner : MonoBehaviour
 
     private void Start()
     {
-        symbolHeight = reels[1].ReelSymbols[1].rect.height;
+        symbolHeight = reels[1].ReelSymbols[1].GetComponent<RectTransform>().rect.height;
         spinIteration = -symbolHeight * reels[1].ReelSymbols.Length;
     }
 
@@ -65,8 +65,8 @@ public class ReelSpinner : MonoBehaviour
 
     public void ScrollStop(Transform reelT)
     {
-        reelsState = ReelStateEnum.Stop;
-        reelT.GetComponent<Reel>().isFinalSpin = true;
+        //reelsState = ReelStateEnum.Stop;
+        //reelT.GetComponent<Reel>().isFinalSpin = true;
         DOTween.Kill(reelT);
         var currentReelPosY = reelT.localPosition.y;
         var stoppingDistance = currentReelPosY - symbolHeight * 3;
@@ -76,6 +76,7 @@ public class ReelSpinner : MonoBehaviour
             {
                 if(reelT.GetComponent<Reel>().reelId == 3)
                 {
+                    reelsState = ReelStateEnum.Ready;
                     WinLineChacker.StartCheckAnimation();
                 }
                 PrepareReel(reelT);
@@ -92,16 +93,23 @@ public class ReelSpinner : MonoBehaviour
         var correctionDuration = extraDistance / -(spinDistance / spinDuration);
         reelT.DOLocalMoveY(correctionDistance, correctionDuration)
             .SetEase(Ease.Linear)
-            .OnComplete(() => ScrollStop(reelT));
+            .OnComplete(() => {
+                ScrollStop(reelT);
+                reelsState = ReelStateEnum.Stop;
+                reelT.GetComponent<Reel>().isFinalSpin = true;
+    });
     }
 
     public void ForceStopReels()
     {
-        reelsState = ReelStateEnum.ForceStop;
+        //DOTween.KillAll();
         foreach (var reel in reels)
         {
-            var reelT = reel.GetComponent<Transform>();
-            CorrectSpin(reelT);
+            //if(reel.isFinalSpin == false)
+            //{
+                var reelT = reel.GetComponent<Transform>();
+                CorrectSpin(reelT);
+            //}
         }
     }
 
@@ -116,7 +124,6 @@ public class ReelSpinner : MonoBehaviour
 
     private void PrepareReel(Transform reelT)
     {
-        reelsState = ReelStateEnum.Ready;
         var prevReelPosY = reelT.localPosition.y;
         var traveledReelDistance = -(0 + prevReelPosY);
         reelT.localPosition = new Vector3(reelT.localPosition.x, 0);
